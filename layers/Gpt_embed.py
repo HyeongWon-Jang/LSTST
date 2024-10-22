@@ -139,6 +139,7 @@ class DataEmbedding(nn.Module):
     def __init__(self, feat_dim, d_ff, d_model, max_len, embed_type='fixed', freq='h', dropout=0.1, kernel_width=3,stride=1,padding=1):
         super(DataEmbedding, self).__init__()
 
+        # adjust kernel width, stride, padding with first Conv1d
         self.value_embedding = TokenEmbedding(feat_dim=feat_dim, d_model=d_ff, kernel_width=kernel_width,stride=stride,padding=padding)
         self.position_embedding = PositionalEmbedding(d_model=d_ff, max_len=max_len)
         self.d_model = d_model

@@ -16,9 +16,7 @@ import time
 import warnings
 import numpy as np
 import pdb
-from models import Autoformer, Transformer, TimesNet, Nonstationary_Transformer, DLinear, FEDformer, \
-    Informer, LightTS, Reformer, ETSformer, Pyraformer, PatchTST, MICN, Crossformer, FiLM, iTransformer, \
-    Koopa, TiDE, FreTS, GPT2LMTS, GPTJLMTS
+from models import GPT2LMTS, GPTJLMTS
 from tqdm import tqdm
 from accelerate import Accelerator, DeepSpeedPlugin
 from accelerate import DistributedDataParallelKwargs
@@ -181,6 +179,7 @@ if __name__ == '__main__':
         #vali_data, vali_loader = data_provider(args, 'TEST')
         test_data, test_loader = data_provider(args, 'TEST')
         
+        # Only for GPT2, GPTJ
         if args.model == 'GPT2':
             model = GPT2LMTS.Model(args).float()
         elif args.model == 'GPTJ':
